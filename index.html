@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hajra Zakir — Software Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --forest:#2B3A2F;
+    --forest-deep:#1B2620;
+    --cream:#F4EEDD;
+    --paper:#FBF8F0;
+    --mustard:#C9A227;
+    --clay:#A8532B;
+    --charcoal:#232019;
+    --thread:#8B7355;
+    --line: rgba(35,32,25,0.14);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--cream);
+    color:var(--charcoal);
+    font-family:'Work Sans', sans-serif;
+    font-weight:400;
+    line-height:1.65;
+  }
+  ::selection{background:var(--mustard); color:var(--forest-deep);}
+  h1,h2,h3{font-family:'Fraunces', serif;}
+  a{color:inherit;}
+
+  .eyebrow{
+    font-family:'Space Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--thread);
+    font-weight:500;
+  }
+
+  nav{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:1.2rem 3rem;
+    background:rgba(244,238,221,0.92);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-mark{
+    font-family:'Fraunces', serif; font-weight:600; font-size:1.1rem; color:var(--forest-deep);
+  }
+  .nav-mark span{color:var(--clay);}
+  .nav-links{display:flex; gap:2.2rem; list-style:none;}
+  .nav-links a{
+    font-size:0.85rem; font-weight:500; text-decoration:none; color:#4a4636;
+    transition:color 0.2s ease;
+  }
+  .nav-links a:hover{color:var(--forest-deep);}
+  .nav-cta{
+    font-size:0.82rem; font-weight:600; text-decoration:none;
+    background:var(--forest-deep); color:var(--cream); padding:0.6rem 1.3rem; border-radius:4px;
+    transition:background 0.2s ease;
+  }
+  .nav-cta:hover{background:var(--forest);}
+
+  header.hero{
+    padding:9rem 3rem 5rem;
+    max-width:1180px; margin:0 auto;
+    display:flex; align-items:center; gap:4rem;
+  }
+  .hero-text{flex:1.3;}
+  .hero-text .eyebrow{margin-bottom:1rem; display:block;}
+  .hero-text h1{
+    font-size:clamp(2.3rem, 4.6vw, 3.6rem);
+    font-weight:600; line-height:1.12; color:var(--forest-deep); letter-spacing:-0.01em;
+  }
+  .hero-text h1 em{
+    font-style:italic; font-weight:500; color:var(--clay);
+  }
+  .hero-role-line{
+    font-family:'Space Mono', monospace; font-size:0.92rem; color:var(--thread);
+    margin-top:0.9rem; letter-spacing:0.01em;
+  }
+  .hero-sub{
+    font-size:1.08rem; color:#4a4636; max-width:520px; margin-top:1.2rem;
+  }
+  .hero-cta{display:flex; gap:1rem; margin-top:2.2rem; flex-wrap:wrap;}
+  .btn{
+    font-size:0.85rem; font-weight:600; text-decoration:none;
+    padding:0.85rem 1.6rem; border-radius:4px; display:inline-flex; align-items:center; gap:0.5rem;
+    transition:all 0.2s ease;
+  }
+  .btn-primary{background:var(--forest-deep); color:var(--cream);}
+  .btn-primary:hover{background:var(--forest); transform:translateY(-1px);}
+  .btn-outline{border:1.5px solid var(--forest-deep); color:var(--forest-deep);}
+  .btn-outline:hover{background:var(--forest-deep); color:var(--cream);}
+
+  .hero-card{
+    flex:1;
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:2.2rem;
+    box-shadow:0 20px 40px -20px rgba(35,32,25,0.15);
+  }
+  .hero-card-row{
+    display:flex; justify-content:space-between; padding:0.75rem 0;
+    border-bottom:1px solid var(--line); font-size:0.88rem;
+  }
+  .hero-card-row:last-child{border-bottom:none;}
+  .hero-card-row span:first-child{color:var(--thread);}
+  .hero-card-row span:last-child{font-weight:600; color:var(--forest-deep); text-align:right;}
+
+  section{padding:5.5rem 3rem;}
+  .section-inner{max-width:1080px; margin:0 auto;}
+  .section-head{margin-bottom:2.8rem;}
+  .section-head .eyebrow{margin-bottom:0.6rem; display:block;}
+  .section-head h2{
+    font-size:clamp(1.75rem, 2.8vw, 2.3rem); font-weight:600; color:var(--forest-deep);
+  }
+
+  .about{background:var(--paper); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .about-grid{display:flex; gap:4rem; align-items:flex-start;}
+  .about-text{flex:1.4; font-size:1.03rem; color:#333;}
+  .about-text p + p{margin-top:1rem;}
+  .about-stats{flex:1; display:grid; grid-template-columns:1fr 1fr; gap:1.5rem;}
+  .stat{border-left:3px solid var(--mustard); padding-left:1rem;}
+  .stat b{display:block; font-family:'Fraunces', serif; font-size:1.8rem; color:var(--forest-deep);}
+  .stat span{font-size:0.78rem; color:var(--thread);}
+
+  .skills-cols{display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:2.5rem;}
+  .skill-col h3{font-size:0.95rem; color:var(--forest-deep); margin-bottom:1rem; font-weight:600;}
+  .skill-list{list-style:none; display:flex; flex-direction:column; gap:0.65rem;}
+  .skill-list li{
+    font-size:0.9rem; color:#333; display:flex; align-items:center; gap:0.6rem;
+    padding-bottom:0.65rem; border-bottom:1px solid var(--line);
+  }
+  .skill-list li::before{
+    content:''; width:5px; height:5px; background:var(--clay); border-radius:50%; flex-shrink:0;
+  }
+
+  .project{background:var(--forest-deep); color:var(--cream);}
+  .project .eyebrow{color:#C9BEA0;}
+  .project .section-head h2{color:var(--cream);}
+  .project-top{
+    display:flex; justify-content:space-between; align-items:flex-end; gap:2rem;
+    flex-wrap:wrap; margin-bottom:2.4rem;
+  }
+  .project-desc{max-width:600px; color:#DCD6C2; font-size:1.02rem;}
+  .project-meta{font-size:0.85rem; color:#B7AF98; text-align:right;}
+  .project-meta div{margin-bottom:0.3rem;}
+  .project-meta b{color:var(--mustard); font-weight:600;}
+
+  .feature-grid{
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1.2rem; margin:2.4rem 0;
+  }
+  .feature-card{
+    border:1px solid rgba(244,238,221,0.16); border-radius:8px; padding:1.4rem;
+    background:rgba(244,238,221,0.03);
+  }
+  .feature-card .num{font-family:'Space Mono', monospace; font-size:0.7rem; color:var(--mustard);}
+  .feature-card h3{font-size:1.02rem; font-weight:600; margin:0.6rem 0 0.4rem; color:var(--cream);}
+  .feature-card p{font-size:0.87rem; color:#C9BEA0;}
+
+  .stack-strip{display:flex; flex-wrap:wrap; gap:0.6rem; margin-top:2rem; padding-top:2rem; border-top:1px solid rgba(244,238,221,0.14);}
+
+  /* ---------- KAAMLY SECTION ---------- */
+  .project.kaamly{background:var(--forest);}
+  .kaamly-subhead{
+    font-family:'Space Mono', monospace; font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase;
+    color:var(--mustard); margin:2.2rem 0 1rem;
+  }
+  .service-chip-row{display:flex; flex-wrap:wrap; gap:0.6rem;}
+  .service-chip{
+    font-size:0.82rem; padding:0.5rem 1rem; border-radius:100px;
+    border:1px solid rgba(244,238,221,0.3); color:#EDE6D6; background:rgba(244,238,221,0.04);
+  }
+  .kaamly-roles{margin:1rem 0 0;}
+  .kaamly-roles .num{font-family:'Fraunces', serif; font-style:italic; font-size:0.85rem; color:var(--mustard); text-transform:none; letter-spacing:0;}
+  .stack-pill{
+    font-family:'Space Mono', monospace; font-size:0.75rem; padding:0.4rem 0.9rem;
+    border:1px solid rgba(244,238,221,0.3); border-radius:100px; color:#EDE6D6;
+  }
+
+  /* ---------- MORE PROJECTS ---------- */
+  .more-projects-grid{
+    display:grid; grid-template-columns:1fr 1fr; gap:1.8rem;
+  }
+  .more-project-card{
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:1.8rem;
+    box-shadow:0 12px 28px -18px rgba(35,32,25,0.18);
+  }
+  .mp-top{display:flex; justify-content:space-between; align-items:center; margin-bottom:0.9rem;}
+  .mp-status{
+    font-family:'Space Mono', monospace; font-size:0.68rem; letter-spacing:0.08em; text-transform:uppercase;
+    padding:0.3rem 0.7rem; border-radius:100px; font-weight:500;
+  }
+  .mp-status.live{background:rgba(43,58,47,0.1); color:var(--forest-deep); border:1px solid rgba(43,58,47,0.25);}
+  .mp-status.progress{background:rgba(201,162,39,0.12); color:#8a6d15; border:1px solid rgba(201,162,39,0.35);}
+  .mp-year{font-family:'Space Mono', monospace; font-size:0.75rem; color:var(--thread);}
+  .more-project-card h3{font-size:1.35rem; font-weight:600; color:var(--forest-deep); margin-bottom:0.7rem;}
+  .mp-desc{font-size:0.92rem; color:#4a4636; margin-bottom:1rem;}
+  .mp-points{list-style:none; margin-bottom:1.3rem;}
+  .mp-points li{
+    font-size:0.85rem; color:#333; padding-left:1.1rem; position:relative; margin-bottom:0.5rem;
+  }
+  .mp-points li::before{
+    content:''; position:absolute; left:0; top:0.5em; width:5px; height:5px; border-radius:50%; background:var(--clay);
+  }
+  .more-project-card .stack-strip{border-top:none; margin-top:0; padding-top:0;}
+  .more-project-card .stack-pill{
+    border:1px solid var(--line); color:var(--thread); font-size:0.7rem;
+  }
+
+  .timeline{position:relative; padding-left:2.2rem;}
+  .timeline::before{content:''; position:absolute; left:0.3rem; top:0.4rem; bottom:0.4rem; width:2px; background:var(--line);}
+  .tl-item{position:relative; padding-bottom:2.4rem;}
+  .tl-item:last-child{padding-bottom:0;}
+  .tl-item::before{
+    content:''; position:absolute; left:-2.2rem; top:0.3rem; width:10px; height:10px;
+    border-radius:50%; background:var(--clay); border:2px solid var(--cream);
+  }
+  .tl-year{font-family:'Space Mono', monospace; font-size:0.75rem; color:var(--thread);}
+  .tl-item h3{font-size:1.2rem; font-weight:600; color:var(--forest-deep); margin:0.3rem 0 0.15rem;}
+  .tl-org{font-size:0.88rem; color:var(--clay); font-weight:600; margin-bottom:0.4rem;}
+  .tl-item p{color:#4a4636; font-size:0.92rem; max-width:600px;}
+
+  footer{background:var(--charcoal); color:var(--cream); padding:5rem 3rem 2.2rem; text-align:center;}
+  footer .eyebrow{color:#9C9584; justify-content:center; display:flex;}
+  footer h2{font-size:clamp(1.8rem, 4vw, 2.6rem); font-weight:600; margin:1rem 0 2rem;}
+  .contact-links{display:flex; justify-content:center; gap:2rem; flex-wrap:wrap; font-size:0.88rem; margin-bottom:3rem;}
+  .contact-links a{text-decoration:none; color:#EDE6D6;}
+  .contact-links a:hover{color:var(--mustard);}
+  .foot-bottom{
+    border-top:1px solid rgba(244,238,221,0.12); padding-top:1.4rem;
+    font-size:0.72rem; color:#8A8474; display:flex; justify-content:space-between; flex-wrap:wrap; gap:0.5rem;
+  }
+
+  @media (max-width: 860px){
+    nav{padding:1rem 1.2rem;}
+    .nav-links{display:none;}
+    section, header.hero{padding:4rem 1.3rem;}
+    header.hero{padding-top:7rem; flex-direction:column;}
+    .about-grid{flex-direction:column; gap:2.2rem;}
+    .skills-cols{grid-template-columns:1fr;}
+    .more-projects-grid{grid-template-columns:1fr;}
+    .project-top{flex-direction:column; align-items:flex-start;}
+    .project-meta{text-align:left;}
+    .foot-bottom{flex-direction:column; justify-content:center;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-mark">Hajra Zakir<span>.</span></div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#project">Project</a></li>
+    <li><a href="#kaamly">Kaamly</a></li>
+    <li><a href="#school-lms">School LMS</a></li>
+    <li><a href="#more-projects">More Work</a></li>
+    <li><a href="#achievements">Achievements</a></li>
+    <li><a href="#education">Education</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Contact</a>
+</nav>
+
+<header class="hero" id="top">
+  <div class="hero-text">
+    <span class="eyebrow"><span style="color:var(--clay);">●</span> Available for new opportunities</span>
+    <h1>Hi, I'm <em>Hajra Zakir</em></h1>
+    <p class="hero-role-line">Software Engineering Graduate · React Native & MERN Stack</p>
+    <p class="hero-sub">I build full-stack mobile apps with React Native, Node.js, Express, and MongoDB — most recently Thrift Bazar, a marketplace built for sustainable fashion, from data model to working product.</p>
+    <div class="hero-cta">
+      <a href="#project" class="btn btn-primary">View Work →</a>
+      <a href="#contact" class="btn btn-outline">Contact Me</a>
+    </div>
+  </div>
+  <div class="hero-card">
+    <div class="hero-card-row"><span>Location</span><span>Abbottabad, Pakistan</span></div>
+    <div class="hero-card-row"><span>Degree</span><span>BS Software Engineering</span></div>
+    <div class="hero-card-row"><span>Status</span><span>Open to Junior Roles & Internships</span></div>
+    <div class="hero-card-row"><span>GPA</span><span>3.78 / 4.00</span></div>
+    <div class="hero-card-row"><span>Stack</span><span>MERN + React Native</span></div>
+    <div class="hero-card-row"><span>Email</span><span>hajrazakir3@gmail.com</span></div>
+    <div class="hero-card-row"><span>Phone</span><span>+92 325 1752030</span></div>
+  </div>
+</header>
+
+<section class="about" id="about">
+  <div class="section-inner">
+    <div class="section-head">
+      <span class="eyebrow">About</span>
+      <h2>Detail-oriented, product-minded.</h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>I'm a Software Engineering graduate from Abbottabad University of Science & Technology, with hands-on experience building full-stack mobile applications using React Native, Node.js, Express, and MongoDB.</p>
+        <p>My final year project, Thrift Bazar, gave me real experience designing user roles, secure authentication, and RESTful APIs built to hold up under actual use. I'm passionate about scalable applications and continuous learning, and I'm eager to contribute to an innovative software development team.</p>
+      </div>
+      <div class="about-stats">
+        <div class="stat"><b>3.78</b><span>GPA / 4.00</span></div>
+        <div class="stat"><b>1</b><span>Flagship App Shipped</span></div>
+        <div class="stat"><b>3</b><span>User Roles Designed</span></div>
+        <div class="stat"><b>2</b><span>Languages Spoken</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="section-inner">
+    <div class="section-head">
+      <span class="eyebrow">Skills</span>
+      <h2>Technical & professional toolkit</h2>
+    </div>
+    <div class="skills-cols">
+      <div class="skill-col">
+        <h3>Technical Skills</h3>
+        <ul class="skill-list">
+          <li>React Native (Expo)</li>
+          <li>JavaScript (ES6)</li>
+          <li>Node.js</li>
+          <li>Express.js</li>
+          <li>MongoDB</li>
+          <li>RESTful APIs</li>
+          <li>Git & GitHub</li>
+          <li>Postman</li>
+          <li>UI/UX Design</li>
+        </ul>
+      </div>
+      <div class="skill-col">
+        <h3>Professional Skills</h3>
+        <ul class="skill-list">
+          <li>Critical Thinking</li>
+          <li>Team Collaboration</li>
+          <li>Communication</li>
+          <li>Time Management</li>
+          <li>Adaptability</li>
+        </ul>
+      </div>
+      <div class="skill-col">
+        <h3>Design Tools</h3>
+        <ul class="skill-list">
+          <li>Adobe Photoshop — Pro</li>
+        </ul>
+      </div>
+      <div class="skill-col">
+        <h3>Languages</h3>
+        <ul class="skill-list">
+          <li>English — Fluent</li>
+          <li>Urdu — Native</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="project" id="project">
+  <div class="section-inner">
+    <div class="section-head">
+      <span class="eyebrow">Featured Project</span>
+      <h2>Thrift Bazar</h2>
+    </div>
+    <div class="project-top">
+      <p class="project-desc">A full-stack mobile marketplace for sustainable fashion, built end-to-end as a final year project — from data model and authentication to a production-style API layer.</p>
+      <div class="project-meta">
+        <div><b>Role:</b> Full Stack Mobile Developer</div>
+        <div><b>Timeline:</b> 2025 – 2026</div>
+        <div><b>Type:</b> Final Year Project</div>
+      </div>
+    </div>
+
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="num">01</div>
+        <h3>Role-Based Access</h3>
+        <p>Secure authentication with distinct permission levels for Buyers, Sellers, and Administrators.</p>
+      </div>
+      <div class="feature-card">
+        <div class="num">02</div>
+        <h3>Bidding System</h3>
+        <p>A live bidding flow layered on top of standard listings for competitive pricing.</p>
+      </div>
+      <div class="feature-card">
+        <div class="num">03</div>
+        <h3>Clothing Rental</h3>
+        <p>A rental pathway alongside resale, extending the marketplace beyond one-off sales.</p>
+      </div>
+      <div class="feature-card">
+        <div class="num">04</div>
+        <h3>Charity Donation</h3>
+        <p>A built-in channel for donating items, tying the app to its sustainability mission.</p>
+      </div>
+    </div>
+
+    <p class="project-desc" style="color:#C9BEA0; font-size:0.95rem;">The project followed a complete software-engineering process — design, implementation, documentation, and presentation — with RESTful APIs enabling seamless communication between the React Native frontend and the Express/MongoDB backend.</p>
+
+    <div class="stack-strip">
+      <span class="stack-pill">React Native (Expo)</span>
+      <span class="stack-pill">Node.js</span>
+      <span class="stack-pill">Express.js</span>
+      <span class="stack-pill">MongoDB</span>
+      <span class="stack-pill">JWT Auth</span>
+      <span class="stack-pill">REST APIs</span>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- NAYA PROJECT ADD KARNE KE LIYE: neeche 'more-project-card' jaisa naya <div> copy karke paste kar dein -->
+    <!-- ============================================ -->
+
+    <p style="margin-top:2rem;">
+      <a href="https://github.com/Hajrazakir/Thriftbazar-Backend" target="_blank" class="btn btn-outline" style="border-color:rgba(244,238,221,0.4); color:var(--cream);">View Code on GitHub →</a>
+    </p>
+
+  </div>
+</section>
+
+<section class="project kaamly" id="kaamly">
+  <div class="section-inner">
+    <div class="section-head">
+      <span class="eyebrow">Currently Building</span>
+      <h2>Kaamly</h2>
+    </div>
+    <div class="project-top">
+      <p class="project-desc">A local services marketplace that connects customers with verified, nearby service providers — booking a trusted electrician, tutor, or technician should feel as easy as ordering food.</p>
+      <div class="project-meta">
+        <div><b>Role:</b> Full Stack Developer</div>
+        <div><b>Timeline:</b> 2026 — Ongoing</div>
+        <div><b>Status:</b> In Development</div>
+      </div>
+    </div>
+
+    <p class="kaamly-subhead">What can be booked</p>
+    <div class="service-chip-row">
+      <span class="service-chip">Electrician</span>
+      <span class="service-chip">Plumber</span>
+      <span class="service-chip">AC Technician</span>
+      <span class="service-chip">Painter</span>
+      <span class="service-chip">Carpenter</span>
+      <span class="service-chip">Makeup Artist</span>
+      <span class="service-chip">Tutor</span>
+      <span class="service-chip">Cleaner</span>
+      <span class="service-chip">Mobile & Laptop Repair</span>
+      <span class="service-chip">Photographer</span>
+    </div>
+
+    <p class="kaamly-subhead">How it works — three roles, one flow</p>
+    <div class="feature-grid kaamly-roles">
+      <div class="feature-card">
+        <div class="num">Customer</div>
+        <h3>Book a trusted provider</h3>
+        <p>Search a service, browse nearby providers with ratings and prices, pick an available slot, chat, and leave a review once the job's done.</p>
+      </div>
+      <div class="feature-card">
+        <div class="num">Provider</div>
+        <h3>Manage the work</h3>
+        <p>Build a profile, list services and pricing, set availability, accept or decline bookings, and track earnings on a personal dashboard.</p>
+      </div>
+      <div class="feature-card">
+        <div class="num">Admin</div>
+        <h3>Keep the platform trustworthy</h3>
+        <p>Verify provider identities, review complaints, monitor bookings and users, and keep an audit trail across the platform.</p>
+      </div>
+    </div>
+
+    <p class="kaamly-subhead">Built for trust</p>
+    <p class="project-desc" style="color:#C9BEA0; font-size:0.95rem;">Identity verification is core, not an afterthought — every provider goes through a CNIC/ID check before earning a Verified badge. The platform is being built with JWT authentication, role-based access control, password hashing, secure APIs, and admin audit logs, alongside reporting and review-manipulation safeguards to protect both sides of every booking.</p>
+
+    <div class="stack-strip">
+      <span class="stack-pill">React Native</span>
+      <span class="stack-pill">Node.js</span>
+      <span class="stack-pill">Express.js</span>
+      <span class="stack-pill">MongoDB</span>
+      <span class="stack-pill">JWT Auth</span>
+      <span class="stack-pill">Role-Based Access</span>
+    </div>
+  </div>
+</section>
+
+<section class="project" id="school-lms">
+  <div class="section-inner">
+    <div class="section-head">
+      <span class="eyebrow">Recently Shipped</span>
+      <h2>School LMS — Backend API</h2>
+    </div>
+    <div class="project-top">
+      <p class="project-desc">A REST API for a multi-role School Management System, built module by module and verified end-to-end against a live MongoDB Atlas database — role-based access for admins, accountants, teachers, students, and parents.</p>
+      <div class="project-meta">
+        <div><b>Role:</b> Backend Developer</div>
+        <div><b>Timeline:</b> 2026</div>
+        <div><b>Type:</b> Independent Project</div>
+      </div>
+    </div>
+
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="num">01</div>
+        <h3>Automatic Grading</h3>
+        <p>Exam results compute percentage, letter grade, and pass/fail automatically the moment marks are entered.</p>
+      </div>
+      <div class="feature-card">
+        <div class="num">02</div>
+        <h3>Attendance-Linked Payroll</h3>
+        <p>Teacher salary deductions are calculated straight from real attendance records, not manual entry.</p>
+      </div>
+      <div class="feature-card">
+        <div class="num">03</div>
+        <h3>Conflict-Safe Scheduling</h3>
+        <p>The timetable engine automatically blocks double-booking a teacher, class, or room in an overlapping slot.</p>
+      </div>
+      <div class="feature-card">
+        <div class="num">04</div>
+        <h3>14+ Modules</h3>
+        <p>Auth, attendance, exams, fees, salary, timetable, leave, chat, notifications, reports, and audit logs.</p>
+      </div>
+    </div>
+
+    <p class="project-desc" style="color:#C9BEA0; font-size:0.95rem;">Every module follows the same architecture — a Zod validator, an Express controller, and a route guarded by JWT auth and role-based access control — with every query scoped by school, so the same codebase is multi-tenant-ready. A parent-teacher chat system even enforces that a parent can only message their own child's actual assigned class teacher.</p>
+
+    <div class="stack-strip">
+      <span class="stack-pill">Node.js</span>
+      <span class="stack-pill">Express.js</span>
+      <span class="stack-pill">MongoDB</span>
+      <span class="stack-pill">Mongoose</span>
+      <span class="stack-pill">JWT Auth</span>
+      <span class="stack-pill">Zod Validation</span>
+      <span class="stack-pill">Role-Based Access Control</span>
+    </div>
+
+    <p style="margin-top:2rem;"><a href="https://github.com/Hajrazakir/School-LMS-backend" target="_blank" class="btn btn-outline" style="border-color:rgba(244,238,221,0.4); color:var(--cream);">View Code on GitHub →</a></p>
+  </div>
+</section>
+
+<section id="more-projects">
+  <div class="section-inner">
+    <div class="section-head">
+      <span class="eyebrow">More Work</span>
+      <h2>Other things I've built.</h2>
+    </div>
+    <div class="more-projects-grid">
+
+      <div class="more-project-card">
+        <div class="mp-top">
+          <span class="mp-status live">Shipped</span>
+          <span class="mp-year">2026</span>
+        </div>
+        <h3>Deskfolk</h3>
+        <p class="mp-desc">A full front-end e-commerce store for workspace products — product catalog, category filters, cart, and a complete checkout flow, built with React, TypeScript, and Tailwind CSS.</p>
+        <ul class="mp-points">
+          <li>Product browsing with category-based filtering</li>
+          <li>Persistent cart and order flow using local storage</li>
+          <li>Order confirmation with a clean checkout summary</li>
+        </ul>
+        <div class="stack-strip">
+          <span class="stack-pill">React</span>
+          <span class="stack-pill">TypeScript</span>
+          <span class="stack-pill">Tailwind CSS</span>
+          <span class="stack-pill">Vite</span>
+        </div>
+        <p style="margin-top:1rem; display:flex; gap:1.2rem;">
+          <a href="https://hajrazakir.github.io/DeskFolk/" target="_blank" style="font-size:0.82rem; font-weight:600; color:var(--clay); text-decoration:none;">Live Demo →</a>
+          <a href="https://github.com/Hajrazakir/DeskFolk" target="_blank" style="font-size:0.82rem; font-weight:600; color:var(--thread); text-decoration:none;">GitHub →</a>
+        </p>
+      </div>
+
+      <div class="more-project-card">
+        <div class="mp-top">
+          <span class="mp-status live">Shipped</span>
+          <span class="mp-year">2026</span>
+        </div>
+        <h3>Taskora</h3>
+        <p class="mp-desc">A polished project management tool — a real website flow with a marketing landing page, sign up / log in, and a working dashboard, not just a static demo. Built with React, TypeScript, and Vite.</p>
+        <ul class="mp-points">
+          <li>Kanban-style project workspace with tasks, status, priority, and due dates</li>
+          <li>Real client-side routing with protected dashboard routes</li>
+          <li>Per-account data with a one-click demo login</li>
+        </ul>
+        <div class="stack-strip">
+          <span class="stack-pill">React</span>
+          <span class="stack-pill">TypeScript</span>
+          <span class="stack-pill">React Router</span>
+          <span class="stack-pill">Vite</span>
+        </div>
+        <p style="margin-top:1rem; display:flex; gap:1.2rem;">
+          <a href="https://hajrazakir.github.io/Taskora/" target="_blank" style="font-size:0.82rem; font-weight:600; color:var(--clay); text-decoration:none;">Live Demo →</a>
+          <a href="https://github.com/Hajrazakir/Taskora" target="_blank" style="font-size:0.82rem; font-weight:600; color:var(--thread); text-decoration:none;">GitHub →</a>
+        </p>
+      </div>
+
+      <!-- ============================================ -->
+      <!-- NAYA PROJECT ADD KARNE KE LIYE: is poore .more-project-card block ko copy karke yahan paste kar dein -->
+      <!-- ============================================ -->
+
+    </div>
+  </div>
+</section>
+
+<section id="achievements">
+  <div class="section-inner">
+    <div class="section-head">
+      <span class="eyebrow">Achievements</span>
+      <h2>Certifications & conferences.</h2>
+    </div>
+    <div class="more-projects-grid">
+
+      <div class="more-project-card">
+        <div class="mp-top">
+          <span class="mp-status live">Completed</span>
+          <span class="mp-year">Aug — Sep 2026</span>
+        </div>
+        <h3>Full Stack Development Internship</h3>
+        <p class="mp-desc">One-month virtual internship at CodeAlpha, completing hands-on full stack development work with a strong emphasis on analytical skills and adapting quickly to new technologies.</p>
+        <p style="margin-top:1rem; display:flex; gap:1.2rem; flex-wrap:wrap;">
+          <a href="assets/certificates/CodeAlpha_Certificate_Hajra_Zakir.pdf" target="_blank" style="font-size:0.82rem; font-weight:600; color:var(--clay); text-decoration:none;">View Certificate →</a>
+          <a href="assets/certificates/CodeAlpha_LOR_Hajra_Zakir.pdf" target="_blank" style="font-size:0.82rem; font-weight:600; color:var(--thread); text-decoration:none;">View Letter of Recommendation →</a>
+        </p>
+      </div>
+
+      <div class="more-project-card">
+        <div class="mp-top">
+          <span class="mp-status live">Attended</span>
+          <span class="mp-year">Sep 2026</span>
+        </div>
+        <h3>International Conference Participation</h3>
+        <p class="mp-desc">Attended 5 international conferences to date. Most recently the International Conference on Artificial Intelligence, Cyber Security, Multimodal Robotics and Drones (ACMRD 2026) and the 10th International CoSiM Conference, held 5th–12th September 2026 in Uelzen and Berlin, Germany. Also attended two sessions organized by the Women in Computer Science (WiCS) Club under AI-Explain You Science (AIEYS).</p>
+        <ul class="mp-points">
+          <li>ACMRD 2026 & 10th CoSiM Conference — Uelzen & Berlin, Germany — 5th–12th September 2026</li>
+          <li>"AI Service Design In University" — 2nd September 2026</li>
+          <li>"AI-Driven Intrusion Detection System for IoT/UAV Networks" — 1st September 2026</li>
+        </ul>
+        <p style="margin-top:1rem; display:flex; gap:1.2rem; flex-wrap:wrap;">
+          <a href="assets/certificates/ACMRD_CoSiM_Conference_Certificate.png" target="_blank" style="font-size:0.82rem; font-weight:600; color:var(--clay); text-decoration:none;">Certificate 1 →</a>
+          <a href="assets/certificates/AIEYS_Conference_Certificate.jpeg" target="_blank" style="font-size:0.82rem; font-weight:600; color:var(--thread); text-decoration:none;">Certificate 2 →</a>
+          <a href="assets/certificates/AIEYS_Conference_Certificate_2.jpeg" target="_blank" style="font-size:0.82rem; font-weight:600; color:var(--clay); text-decoration:none;">Certificate 3 →</a>
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="section-inner">
+    <div class="section-head">
+      <span class="eyebrow">Education</span>
+      <h2>Academic background</h2>
+    </div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-year">2022 — 2026</div>
+        <h3>Bachelor of Science in Software Engineering</h3>
+        <div class="tl-org">Abbottabad University of Science & Technology</div>
+        <p>Coursework: Mobile Application Development, Database Systems, Software Engineering, Web Technologies, Data Structures & Algorithms. Graduated with a 3.78 / 4.00 GPA.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">2020 — 2022</div>
+        <h3>F.Sc (Pre-Engineering)</h3>
+        <div class="tl-org">FG Girls College, Abbottabad</div>
+        <p>Graduated with highest honors — Grade A — recognizing academic excellence.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <span class="eyebrow">Contact</span>
+  <h2>Let's build something worth shipping.</h2>
+  <p style="color:#C9BEA0; font-size:0.92rem; margin-top:-1.3rem; margin-bottom:2.5rem;">Open to junior software engineering roles, internships, and freelance work.</p>
+  <div class="contact-links">
+    <a href="mailto:hajrazakir3@gmail.com">hajrazakir3@gmail.com</a>
+    <a href="tel:+923251752030">+92 325 1752030</a>
+    <a href="#top">Shimla Hill, Abbottabad</a>
+  </div>
+  <div class="foot-bottom">
+    <span>© 2026 Hajra Zakir</span>
+    <span>Software Engineer — MERN & React Native</span>
+  </div>
+</footer>
+
+</body>
+</html>
